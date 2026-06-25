@@ -70,7 +70,7 @@ pub struct ProviderParam<
     pub path_query: Query<'w, 's, PathData, PathFilter>,
 }
 impl<
-    ActionData: QueryData + 'static,
+    ActionData: QueryData + 'static + bevy::ecs::query::IterQueryData,
     PathData: QueryData + 'static,
     PathFilter: QueryFilter + 'static,
 > ProviderParam<'_, '_, ActionData, PathData, PathFilter>

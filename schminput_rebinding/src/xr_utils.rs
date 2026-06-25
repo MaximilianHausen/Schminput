@@ -12,7 +12,7 @@ impl Plugin for SchmebindingXrUtilsPlugin {
             app.add_systems(
                 PostUpdate,
                 restart_session.run_if(
-                    on_message::<XrSessionDestroyedMessage>.and(resource_exists::<ShouldRestart>),
+                    on_message::<XrSessionDestroyedMessage>.and_then(resource_exists::<ShouldRestart>),
                 ),
             );
         }
