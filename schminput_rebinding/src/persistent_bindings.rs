@@ -86,7 +86,7 @@ fn serialize_v1(
         for (action_set, actions) in &set_query {
             let mut iter = action_query.iter_many_mut(actions.iter());
             #[cfg_attr(not(feature = "xr"), allow(unused_variables))]
-            while let Some((keyboard, mouse, gamepad, gamepad_haptics, openxr, action)) =
+            while let Some(Ok((keyboard, mouse, gamepad, gamepad_haptics, openxr, action))) =
                 iter.fetch_next()
             {
                 let doc_bindings = doc
@@ -238,6 +238,7 @@ fn deserialize_v1(
                 };
                 let Some(action_entity) = action_query
                     .iter_many_mut(actions.iter())
+                    .matched()
                     .find(|(_, action)| action.name == action_name)
                     .map(|(e, _)| e)
                 else {

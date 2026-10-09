@@ -15,14 +15,14 @@ repository = "https://github.com/Schmarni-Dev/Schminput/"
 
 [workspace.dependencies]
 schminput = { path = ".", version = "0.5.0" }
-bevy = { version = "0.19", default-features = false, features = [
+bevy = { version = "0.20", default-features = false, features = [
     "mouse",
     "keyboard",
     "gamepad",
 ] }
-bevy_mod_xr = "0.6.0"
-bevy_mod_openxr = "0.6.0"
-openxr = "0.21"
+bevy_mod_openxr = { git = "https://github.com/awtterpip/bevy_oxr.git", rev = "ce6799dbca9d80f2a658d39ad6ac4dc58c2fdc0d" }
+bevy_mod_xr = { git = "https://github.com/awtterpip/bevy_oxr.git", rev = "ce6799dbca9d80f2a658d39ad6ac4dc58c2fdc0d" }
+openxr = "0.22"
 
 [lints.clippy]
 too_many_arguments = "allow"

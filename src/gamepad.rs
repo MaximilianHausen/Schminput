@@ -563,9 +563,9 @@ pub enum GamepadBindingSource {
     /// The Z button.
     Z,
     /// Non-standard support for other axis types (i.e. HOTAS sliders, potentiometers, etc).
-    OtherAxis(u8),
+    OtherAxis(u32),
     /// Miscellaneous buttons, considered non-standard (i.e. Extra buttons on a flight stick that do not have a gamepad equivalent).
-    OtherButton(u8),
+    OtherButton(u32),
 }
 impl From<GamepadBindingSource> for GamepadInput {
     fn from(value: GamepadBindingSource) -> Self {

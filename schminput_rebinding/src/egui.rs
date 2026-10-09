@@ -109,7 +109,7 @@ pub fn draw_rebinding_ui(
             .show(ui, |ui| {
                 let mut iter = action_query.iter_many_mut(actions.iter());
                 #[cfg_attr(not(feature = "xr"), allow(unused_variables))]
-                while let Some((
+                while let Some(Ok((
                     entity,
                     keyboard,
                     mut mouse,
@@ -118,7 +118,7 @@ pub fn draw_rebinding_ui(
                     xr_bindings,
                     action,
                     is_bool_action,
-                )) = iter.fetch_next()
+                ))) = iter.fetch_next()
                 {
                     let action_type = ActionType::from_query(action_type_query, entity);
                     ui.collapsing(&*action.localized_name, |ui| {
@@ -689,7 +689,7 @@ impl std::fmt::Display for ActionType {
     }
 }
 
-#[derive(Hash, Clone, Copy)]
+#[derive(Hash, Clone, Copy, Debug)]
 struct BindingIdHash<'a> {
     binding_index: usize,
     action: Entity,
